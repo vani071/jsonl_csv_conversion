@@ -21,6 +21,18 @@ php bin/console cache:clear
 
 ```
 
+## How to Run
+
+```bash
+# at project directory
+
+php bin/console app:export-csv
+
+#output will contains file location 
+# ex: success create file . file location = /Users/vani/jsonl_csv_conversion/report/1634070922-report.csv
+
+```
+
 ## Testing
 I separate unit testing in two files base on service layer model
 
