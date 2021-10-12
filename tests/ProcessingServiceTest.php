@@ -3,7 +3,6 @@
 use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use App\Service\ProcessingService;
-use App\Service\FileService;
 
 
 class ProcessingServiceTest extends WebTestCase
@@ -121,20 +120,5 @@ class ProcessingServiceTest extends WebTestCase
         $processingService  = new ProcessingService();
 
         $this->assertEquals( $processingService->generateRowData($data),[]);
-    }
-
-    public function testFileJsonNotFound(): void
-    {
-        $fileService = static::getContainer()->get(FileService::class);
-        $response = $fileService->fetchFileJsonLine('https://s3-ap-southeast-2.amazonaws.com/catch-code-challenge/challenge-3-in.jsonl');
-        $this->assertEquals($response,"Can't get json lines file");
-        
-    }
-
-    public function testBestCaseScenario(): void
-    {
-        $fileService = static::getContainer()->get(FileService::class);
-        $response = $fileService->fetchFileJsonLine('https://s3-ap-southeast-2.amazonaws.com/catch-code-challenge/challenge-1-in.jsonl');
-        $this->assertMatchesRegularExpression('/success/', $response);
     }
 }
